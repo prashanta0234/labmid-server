@@ -1,0 +1,29 @@
+version: "3"
+
+services:
+  mysql:
+    restart: on-failure
+    image: mysql:8.1.0
+    container_name: labmid
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: labmid
+      MYSQL_USER: pro
+      MYSQL_PASSWORD: password
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./data:/var/lib/mysql
+    networks:
+      - labmid
+  upstacks-adminer:
+    restart: on-failure
+    image: adminer:latest
+    container_name: labmid-adminer
+    ports:
+      - 3039:8080
+    networks:
+      - labmid
+networks:
+  labwork:
+    name: labmid
