@@ -25,5 +25,5 @@ services:
     networks:
       - labmid
 networks:
-  labwork:
+  labmid:
     name: labmid
